@@ -1,7 +1,8 @@
 :root {
     --primary-color: #00f2fe;
     --secondary-color: #4facfe;
-    --accent-color: #7d5fff; /* Deep purple/violet */
+    --accent-color: #7d5fff;
+    /* Deep purple/violet */
     --bg-dark: #0a0e17;
     --bg-card: #151a26;
     --text-main: #e0e6ed;
@@ -25,7 +26,10 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .logo {
+h1,
+h2,
+h3,
+.logo {
     font-family: var(--font-heading);
 }
 
@@ -85,7 +89,7 @@ h1, h2, h3, .logo {
     min-height: 90vh;
     display: flex;
     align-items: center;
-    background-image: url('assets/hero.png');
+    background-image: url('assets/hero_image.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -168,7 +172,8 @@ h1 {
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(90deg, #1fa2ff, #12d8fa, #a6ffcb); /* Fresher gradient */
+    background: linear-gradient(90deg, #1fa2ff, #12d8fa, #a6ffcb);
+    /* Fresher gradient */
     background-size: 200% 200%;
     color: #050a10;
     padding: 18px 40px;
@@ -188,15 +193,34 @@ h1 {
 }
 
 @keyframes pulse-animation {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(79, 172, 254, 0.7); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(79, 172, 254, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(79, 172, 254, 0); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 172, 254, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(79, 172, 254, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 172, 254, 0);
+    }
 }
 
 @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Problem Section */
@@ -328,10 +352,12 @@ h1 {
     height: 400px;
     background: linear-gradient(135deg, #1fa2ff, #12d8fa);
     border-radius: 5px 20px 20px 5px;
-    box-shadow: 
-        10px 10px 30px rgba(0,0,0,0.5),
-        2px 0 0 #fff inset, /* Page edge */
-        inset 10px 0 20px rgba(0,0,0,0.2); /* Spine shadow */
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.5),
+        2px 0 0 #fff inset,
+        /* Page edge */
+        inset 10px 0 20px rgba(0, 0, 0, 0.2);
+    /* Spine shadow */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -506,7 +532,7 @@ h1 {
     text-align: center;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
 }
 
 .close-modal {
@@ -586,7 +612,7 @@ footer {
     h1 {
         font-size: 2.2rem;
     }
-    
+
     .hero {
         padding-top: 100px;
         text-align: center;
@@ -599,18 +625,56 @@ footer {
     .solution-content {
         flex-direction: column;
     }
-    
+
     .checkout-section {
         padding: 50px 20px;
     }
-    
+
     .modern-form {
         padding: 25px;
     }
 }
 
 /* Update to Hero Buttons container */
-.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-.cta-button-outline { display: inline-block; background: rgba(255, 255, 255, 0.05); border: 2px solid var(--primary-color); color: #fff; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; }
-.cta-button-outline:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 15px rgba(0, 242, 254, 0.5); transform: translateY(-2px); }
-@media (max-width: 768px) { .hero-buttons { justify-content: center; flex-direction: column; align-items: center; } .cta-button, .cta-button-outline { width: 100%; max-width: 300px; text-align: center; } }
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cta-button-outline {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--primary-color);
+    color: #fff;
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cta-button-outline:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-button,
+    .cta-button-outline {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
