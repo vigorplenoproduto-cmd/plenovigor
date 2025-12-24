@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Recupere sua confiança e vitalidade. Guia completo e natural.">
-    <title>Protocolo Vitalidade Renovada | Guia Completo</title>
+    <title>Protocolo Pleno Vigor | Guia Completo</title>
     <link rel="icon" type="image/png" href="assets/banana_icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     <!-- Header -->
     <header class="glass-header">
         <div class="container header-content">
-            <div class="logo">Vitalidade<span class="highlight">Max</span></div>
+            <div class="logo">Pleno<span class="highlight">Vigor</span></div>
             <a href="#checkout" class="cta-button-small">Quero Acessar Agora</a>
         </div>
     </header>
@@ -33,11 +33,10 @@
             <div class="hero-text">
                 <span class="badge">Método Comprovado</span>
                 <h1>Recupere Sua <span class="text-gradient">Confiança</span> e Potência Máxima</h1>
-                <p class="hero-sub">Um guia completo e natural para homens que desejam retomar o controle, sem depender
-                    de "pílulas mágicas" ou tratamentos invasivos.</p>
+                <p class="hero-sub">Um método MILAGROSO para homens que desejam retomar o controle</p>
 
                 <div class="hero-features">
-                    <div class="feature-item"><i class="fas fa-check-circle"></i> 100% Natural</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> 100% Funcional</div>
                     <div class="feature-item"><i class="fas fa-check-circle"></i> Resultados Rápidos</div>
                     <div class="feature-item"><i class="fas fa-check-circle"></i> Acesso Imediato</div>
                 </div>
@@ -83,7 +82,7 @@
     <section class="solution-section">
         <div class="container solution-content">
             <div class="solution-text">
-                <h2 class="section-title">O Protocolo <span class="highlight">Vitalidade Renovada</span></h2>
+                <h2 class="section-title">O Protocolo <span class="highlight">Pleno Vigor</span></h2>
                 <p>Desenvolvemos um material exclusivo, direto ao ponto, que revela os segredos guardados a sete chaves
                     sobre a saúde masculina.</p>
                 <ul class="benefit-list">
@@ -116,6 +115,11 @@
                 <div class="price-box">
                     <span class="old-price">De R$ 197,90</span>
                     <span class="new-price">Por apenas R$ 29,90</span>
+                </div>
+                <div id="urgency-timer-container"
+                    style="margin-top: 15px; color: #ff4757; font-weight: bold; font-size: 1.1rem;">
+                    <i class="fas fa-clock"></i> Oferta expira em: <span id="urgency-timer"
+                        style="font-family: monospace;">22:00:00</span>
                 </div>
             </div>
 
@@ -157,6 +161,18 @@
         </div>
     </section>
 
+    <!-- Specialist / Typebot Section -->
+    <section id="specialist" class="specialist-section">
+        <div class="container" style="text-align: center; padding: 60px 0;">
+            <button id="specialist-btn" class="cta-button" style="max-width: 100%; width: auto;">
+                FALAR COM ESPECIALISTA
+            </button>
+            <div id="typebot-container" style="display: none; margin-top: 30px;">
+                <typebot-standard style="width: 100%; height: 600px;"></typebot-standard>
+            </div>
+        </div>
+    </section>
+
     <!-- PIX Modal / Result Area (Hidden by default) -->
     <div id="pix-modal" class="modal-overlay hidden">
         <div class="modal-content">
@@ -187,12 +203,32 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 VitalidadeMax. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Pleno Vigor. Todos os direitos reservados.</p>
             <p class="disclaimer">Este produto não substitui o aconselhamento médico profissional.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Typebot Integration -->
+    <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js';
+
+        const btn = document.getElementById('specialist-btn');
+        const container = document.getElementById('typebot-container');
+
+        // Initialize Typebot
+        Typebot.initStandard({
+            typebot: "my-typebot-zyp1rbf",
+            apiHost: "https://tpv.plenovigor.online",
+        });
+
+        // Toggle logic
+        btn.addEventListener('click', () => {
+            btn.style.display = 'none';
+            container.style.display = 'block';
+        });
+    </script>
 </body>
 
 </html>
