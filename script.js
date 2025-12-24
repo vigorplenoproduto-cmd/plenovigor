@@ -25,8 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('https://endpoint.plenovigor.online/webhook/ed9d4beb-f40c-40f7-b9de-77acfff5e952', {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({
                     name: name,
@@ -39,40 +41,38 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const data = await response.json();
 
-                // Assuming the webhook returns the PIX code in a field, 
-                // but if not specified, we might need to handle it.
-                // For now, let's assume the user wants to utilize the returned data or similar.
-                // The prompt says: "endpoint with pix value and info filled".
-                // It doesn't explicitly say the endpoint *returns* the pix code, but usually it does.
-                // However, the original code had a FAKE_PIX_CODE. 
-                // If the webhook creates a transaction, it SHOULD return the payload.
-                // I will assume the server returns a JSON with 'pix_code' or 'qrcode'. 
-                // If not, I'll fallback or check the response structure. 
-                // Let's assume for now the server handles it and returns the pix string in 'pixCopiaECola' or similiar property.
-                // If the user didn't specify the return format, I will Log it and generic fallback or use the fake one if it fails? 
-                // No, the user logic implies this IS the real generation.
-                // Let's try to find a standard property or just dump valid JSON.
-                // Actually, often these webhooks trigger a workflow that might return the PIX. 
-                // I'll assume 'pix_code' is in the response. If 'data.pix_code' exists, use it.
+                // Get PIX code for copy-paste
+                const pixCode = data.pix_code || "";
 
-                // For safety in this blind integration:
-                // I will use data.pix_code || data.pix || data.payload || FAKE_FALLBACK if it was a real app,
-                // but here I should trust the webhook returns something useful. 
-                // Given I can't test it, I'll assume standard 'pix' field or similar.
-                // Let's use a safe fallback if response is empty just so UI doesn't break.
+                // Get base64 QR code image
+                const qrBase64 = data.base64 || "";
 
-                const pixCode = data.pix_code || data.pix || data.qrcode || "00020126580014BR.GOV.BCB.PIX0136123e4567-e89b-12d3-a456-426614174000520400005303986540510.005802BR5913Fulano de Tal6008BRASILIA62070503***630460F4"; // Fallback to avoid broken UI if key differs
+                // Update QR code image
+                const qrImg = document.getElementById('pix-qr-img');
+                if (qrImg && qrBase64) {
+                    // Check if base64 already has data URI prefix
+                    if (qrBase64.startsWith('data:')) {
+                        qrImg.src = qrBase64;
+                    } else {
+                        qrImg.src = `data:image/png;base64,${qrBase64}`;
+                    }
+                }
 
-                modal.classList.remove('hidden');
+                // Update PIX copy-paste input
                 pixCodeInput.value = pixCode;
 
-                startPixTimer(); // Timer inside the modal
+                // Show modal
+                modal.classList.remove('hidden');
+
+                // Start timer inside the modal
+                startPixTimer();
             } else {
+                console.error('Response not OK:', response.status, response.statusText);
                 alert('Erro ao gerar PIX. Tente novamente.');
             }
         } catch (error) {
             console.error('Erro:', error);
-            alert('Erro de conexão. Verifique sua internet.');
+            alert('Erro de conexão. Verifique sua internet e tente novamente.');
         } finally {
             submitBtn.innerHTML = originalBtnContent;
             submitBtn.disabled = false;
