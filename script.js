@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
         const email = document.getElementById('email').value;
+        const cpf = document.getElementById('cpf').value;
 
         // Loading state
         const originalBtnContent = submitBtn.innerHTML;
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: name,
                     phone: phone,
                     email: email,
+                    cpf: cpf,
                     value: "29.90"
                 })
             });
